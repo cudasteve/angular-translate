@@ -2064,9 +2064,9 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
        *                                     This can be optionally an array of translation ids which
        *                                     results that the function's promise returns an object where
        *                                     each key is the translation id and the value the translation.
-       * @param {object} interpolateParams Params
-       * @param {string} interpolationId The id of the interpolation to use
-       * @param {string} forceLanguage A language to be used instead of the current language
+       * @param {object} [interpolateParams={}] Params
+       * @param {string} [interpolationId] The id of the interpolation to use
+       * @param {string} [forceLanguage] A language to be used instead of the current language
        *
        * @return {string|object} translation
        */
