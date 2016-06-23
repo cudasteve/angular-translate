@@ -11,7 +11,7 @@ angular.module('pascalprecht.translate')
  * to pass dynamized values though translation.
  *
  * @param {string} translationId A translation id to be translated.
- * @param {*=} interpolateParams Optional object literal (as hash or string) to pass values into translation.
+ * @param {*=} [interpolateParams] Optional object literal (as hash or string) to pass values into translation.
  *
  * @returns {string} Translated text.
  *

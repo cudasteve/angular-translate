@@ -229,8 +229,8 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
    * registered with no language key. Invoking it with a language key returns the
    * related translation table.
    *
-   * @param {string} langKey A language key.
-   * @param {object} translationTable A plain old JavaScript object that represents a translation table.
+   * @param {string} [langKey] A language key.
+   * @param {object} [translationTable] A plain old JavaScript object that represents a translation table.
    *
    */
   var translations = function (langKey, translationTable) {
@@ -264,7 +264,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
    * Let's you change the class name for `translate-cloak` directive.
    * Default class name is `translate-cloak`.
    *
-   * @param {string} name translate-cloak class name
+   * @param {string} [name] translate-cloak class name
    */
   this.cloakClassName = function (name) {
     if (!name) {
@@ -284,7 +284,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
    * Let's you change the delimiter for namespaced translations.
    * Default delimiter is `.`.
    *
-   * @param {string} delimiter namespace separator
+   * @param {string} [delimiter] namespace separator
    */
   this.nestedObjectDelimeter = function (delimiter) {
     if (!delimiter) {
@@ -403,7 +403,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
    * at initial startup by passing a language key. Similar to `$translateProvider#use`
    * only that it says which language to **prefer**.
    *
-   * @param {string} langKey A language key.
+   * @param {string} [langKey] A language key.
    */
   this.preferredLanguage = function(langKey) {
     if (langKey) {
@@ -452,7 +452,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
    * Sets an indicator which is used when a translation isn't found left to the
    * translation id.
    *
-   * @param {string} indicator An indicator.
+   * @param {string} [indicator] An indicator.
    */
   this.translationNotFoundIndicatorLeft = function (indicator) {
     if (!indicator) {
@@ -471,7 +471,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
    * Sets an indicator which is used when a translation isn't found right to the
    * translation id.
    *
-   * @param {string} indicator An indicator.
+   * @param {string} [indicator] An indicator.
    */
   this.translationNotFoundIndicatorRight = function (indicator) {
     if (!indicator) {
@@ -570,7 +570,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
    * @description
    * Tells the module which key must represent the choosed language by a user in the storage.
    *
-   * @param {string} key A key for the storage.
+   * @param {string} [key] A key for the storage.
    */
   var storageKey = function(key) {
     if (!key) {
@@ -594,7 +594,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
    * Tells angular-translate to use `$translateUrlLoader` extension service as loader.
    *
    * @param {string} url Url
-   * @param {Object=} options Optional configuration object
+   * @param {Object=} [options] Optional configuration object
    */
   this.useUrlLoader = function (url, options) {
     return this.useLoader('$translateUrlLoader', angular.extend({ url: url }, options));
@@ -608,7 +608,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
    * @description
    * Tells angular-translate to use `$translateStaticFilesLoader` extension service as loader.
    *
-   * @param {Object=} options Optional configuration object
+   * @param {Object=} [options] Optional configuration object
    */
   this.useStaticFilesLoader = function (options) {
     return this.useLoader('$translateStaticFilesLoader', options);
@@ -623,7 +623,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
    * Tells angular-translate to use any other service as loader.
    *
    * @param {string} loaderFactory Factory name to use
-   * @param {Object=} options Optional configuration object
+   * @param {Object=} [options] Optional configuration object
    */
   this.useLoader = function (loaderFactory, options) {
     $loaderFactory = loaderFactory;
@@ -677,7 +677,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
    * @description
    * Sets prefix for storage key.
    *
-   * @param {string} prefix Storage key prefix
+   * @param {string} [prefix] Storage key prefix
    */
   this.storagePrefix = function (prefix) {
     if (!prefix) {
@@ -819,7 +819,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
    * * http://www.w3.org/International/core/langtags/
    * * http://tools.ietf.org/html/bcp47
    *
-   * @param {string|object} options - options (or standard)
+   * @param {string|object} [options] - options (or standard)
    * @param {string} options.standard - valid values are 'default', 'bcp47', 'java'
    */
   this.uniformLanguageTag = function (options) {
@@ -854,7 +854,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
    * Use this method at your own risk, since not all browsers return a valid
    * locale (see {@link pascalprecht.translate.$translateProvider#methods_uniformLanguageTag uniformLanguageTag()}).
    *
-   * @param {Function=} fn Function to determine a browser's locale
+   * @param {Function=} [fn] Function to determine a browser's locale
    */
   this.determinePreferredLanguage = function (fn) {
 
@@ -882,8 +882,8 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
    * tries to find the best fitting language key depending on the browsers locale,
    * considering your language key convention.
    *
-   * @param {object} languageKeys Array of language keys the your app will use
-   * @param {object=} aliases Alias map.
+   * @param {object} [languageKeys] Array of language keys the your app will use
+   * @param {object=} [aliases] Alias map.
    */
   this.registerAvailableLanguageKeys = function (languageKeys, aliases) {
     if (languageKeys) {
@@ -908,7 +908,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
    * the cache will be a default (see $cacheFactory). When an object it will
    * be treat as a cache object itself: the usage is $http({cache: cache})
    *
-   * @param {object} cache boolean, string or cache-object
+   * @param {boolean|string|object} [cache='$translationCache'] boolean, string or cache-object
    */
   this.useLoaderCache = function (cache) {
     if (cache === false) {
@@ -936,7 +936,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
    * Sets the default priority of the translate directive. The standard value is `0`.
    * Calling this function without an argument will return the current value.
    *
-   * @param {number} priority for the translate-directive
+   * @param {number} [priority] for the translate-directive
    */
   this.directivePriority = function (priority) {
     if (priority === undefined) {
@@ -961,7 +961,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
    * meaning being stateful.
    * Calling this function without an argument will return the current value.
    *
-   * @param {boolean} state - defines the state of the filter
+   * @param {boolean} [state] - defines the state of the filter
    */
   this.statefulFilter = function (state) {
     if (state === undefined) {
@@ -982,7 +982,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
    * @description
    * The post processor will be intercept right after the translation result. It can modify the result.
    *
-   * @param {object} fn Function or service name (string) to be called after the translation value has been set / resolved. The function itself will enrich every value being processed and then continue the normal resolver process
+   * @param {object} [fn] Function or service name (string) to be called after the translation value has been set / resolved. The function itself will enrich every value being processed and then continue the normal resolver process
    */
   this.postProcess = function (fn) {
     if (fn) {
@@ -1038,11 +1038,11 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
    *                                     This can be optionally an array of translation ids which
    *                                     results that the function returns an object where each key
    *                                     is the translation id and the value the translation.
-   * @param {object=} interpolateParams An object hash for dynamic values
-   * @param {string} interpolationId The id of the interpolation to use
-   * @param {string} defaultTranslationText the optional default translation text that is written as
+   * @param {object=} [interpolateParams] An object hash for dynamic values
+   * @param {string} [interpolationId] The id of the interpolation to use
+   * @param {string} [defaultTranslationText] the optional default translation text that is written as
    *                                        as default text in case it is not found in any configured language
-   * @param {string} forceLanguage A language to be used instead of the current language
+   * @param {string} [forceLanguage] A language to be used instead of the current language
    * @returns {object} promise
    */
   this.$get = [
@@ -1452,6 +1452,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
        * @param translationId
        * @param interpolateParams
        * @param Interpolator
+       * @param [defaultTranslationText]
        * @returns {Q.promise} Promise that will resolve to the translation.
        */
       var resolveForFallbackLanguage = function (fallbackLanguageIndex, translationId, interpolateParams, Interpolator, defaultTranslationText) {
@@ -1520,6 +1521,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
        * @param translationId
        * @param interpolateParams
        * @param Interpolator
+       * @param [defaultTranslationText]
        * @returns {Q.promise} Promise, that resolves to the translation.
        */
       var fallbackTranslation = function (translationId, interpolateParams, Interpolator, defaultTranslationText) {
@@ -1689,7 +1691,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
        *
        * @param {string} langKey language String or Array to be used as preferredLanguage (changing at runtime)
        *
-       * @return {string} preferred language key
+       * @return {string} [preferred] language key
        */
       $translate.preferredLanguage = function (langKey) {
         if(langKey) {
@@ -1734,7 +1736,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
        * @description
        * Returns the language key for the fallback languages or sets a new fallback stack.
        *
-       * @param {string=} langKey language String or Array of fallback languages to be used (to change stack at runtime)
+       * @param {string|array} [langKey] language String or Array of fallback languages to be used (to change stack at runtime)
        *
        * @return {string||array} fallback language key
        */
@@ -2018,7 +2020,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
        * // this will refresh a translation table for the en_US language
        * $translate.refresh('en_US');
        *
-       * @param {string} langKey A language key of the table, which has to be refreshed
+       * @param {string} [langKey] A language key of the table, which has to be refreshed
        *
        * @return {promise} Promise, which will be resolved in case a translation tables refreshing
        * process is finished successfully, and reject if not.
@@ -2108,9 +2110,9 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
        *                                     This can be optionally an array of translation ids which
        *                                     results that the function's promise returns an object where
        *                                     each key is the translation id and the value the translation.
-       * @param {object} interpolateParams Params
-       * @param {string} interpolationId The id of the interpolation to use
-       * @param {string} forceLanguage A language to be used instead of the current language
+       * @param {object} [interpolateParams={}] Params
+       * @param {string} [interpolationId] The id of the interpolation to use
+       * @param {string} [forceLanguage] A language to be used instead of the current language
        *
        * @return {string|object} translation
        */
