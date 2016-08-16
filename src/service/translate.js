@@ -750,7 +750,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
    *  });
    * </pre>
    *
-   * @param {string} factory Factory name
+   * @param {boolean} value - valid values are true or false
    */
   this.usePostCompiling = function (value) {
     $postCompilingEnabled = !(!value);
@@ -1772,7 +1772,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
        * Sets the first key of the fallback language stack to be used for translation.
        * Therefore all languages in the fallback array BEFORE this key will be skipped!
        *
-       * @param {string=} langKey Contains the langKey the iteration shall start with. Set to false if you want to
+       * @param {string|boolean} langKey Contains the langKey the iteration shall start with. Set to false if you want to
        * get back to the whole stack
        */
       $translate.useFallbackLanguage = function (langKey) {
