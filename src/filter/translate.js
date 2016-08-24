@@ -23,6 +23,7 @@ angular.module('pascalprecht.translate')
         <pre>{{ 'TRANSLATION_ID' | translate }}</pre>
         <pre>{{ translationId | translate }}</pre>
         <pre>{{ 'WITH_VALUES' | translate:'{value: 5}' }}</pre>
+        <pre>{{ 'WITH_VALUES' | translate:{value: 32} }}</pre>
         <pre>{{ 'WITH_VALUES' | translate:values }}</pre>
 
       </div>
